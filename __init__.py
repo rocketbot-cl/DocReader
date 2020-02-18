@@ -23,41 +23,30 @@ Para instalar librerias se debe ingresar por terminal a la carpeta "libs"
     pip install <package> -t .
 
 """
-
 import os
-import datetime
-import locale
+base_path = tmp_global_obj["basepath"]
+cur_path = base_path + 'modules' + os.sep + 'XPS' + os.sep + 'libs' + os.sep
+sys.path.append(cur_path)
 
+import fitz
 """
     Obtengo el modulo que fueron invocados
 """
 
-locale.setlocale(locale.LC_ALL, 'en_US')
 module = GetParams("module")
 
-if module == "dateFormat":
-    date = GetParams("date")
-    input_ = GetParams("in")
-    output = GetParams("out")
-    result = GetParams("result")
+if module == "read":
 
+    path = GetParams("path")
+    result = GetParams("result")
     try:
-        if "%d de %B del %Y" in [output, input_]:
-            locale.setlocale(locale.LC_ALL, '')
-            datetime_format = datetime.datetime.strptime(date, input_)
-            date = datetime_format.strftime(output)
-            
-        else:
-            datetime_format = datetime.datetime.strptime(date, input_)
-            date = datetime_format.strftime(output)
+        doc = fitz.open(path)
+        page = doc[0]
+        text = page.getText()
 
         if result:
-            SetVar(result, date)
+            SetVar(result, text)
     
-    except ValueError:
-        PrintException()
-        raise Exception("The selected format does not match with your date")
-
     except Exception as e:
         PrintException()
         raise e

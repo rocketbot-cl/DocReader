@@ -1,7 +1,7 @@
-# Fechas
-Module that changes date format
+# DocReader
+Read documents. Support XPS and PDF
 
-![alt text](https://github.com/rocketbot-cl/Fechas/blob/master/example/fechas.png)
+![alt text](https://github.com/rocketbot-cl/DocReader/blob/master/example/docReader.png)
 
 <h2>License</h2>
 
