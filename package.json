@@ -49,6 +49,42 @@
           {
             "type": "input",
             "placeholder": {
+              "es": "5",
+              "en": "5"
+            },
+            "title": {
+              "es": "Página",
+              "en": "Page"
+            },
+            "id": "page",
+            "css": "col-md-2"
+          },
+          {
+            "type": "select",
+            "placeholder": {
+              "es": "",
+              "en": ""
+            },
+            "title": {
+              "es": "Opción",
+              "en": "Option"
+            },
+            "options": [
+              {
+                "title": "Option 1",
+                "value": "1"
+              },
+              {
+                "title": "Option 2",
+                "value": "2"
+              }
+            ],
+            "id": "option",
+            "css": "col-md-4"
+          },
+          {
+            "type": "input",
+            "placeholder": {
               "es": "result",
               "en": "result"
             },
@@ -64,7 +100,6 @@
             "id": "result",
             "css": "col-md-6"
           }
-
         ]
       },
       "video_youtube": "",

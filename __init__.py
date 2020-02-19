@@ -29,6 +29,7 @@ cur_path = base_path + 'modules' + os.sep + 'DocReader' + os.sep + 'libs' + os.s
 sys.path.append(cur_path)
 
 import fitz
+
 """
     Obtengo el modulo que fueron invocados
 """
@@ -39,13 +40,44 @@ if module == "read":
 
     path = GetParams("path")
     result = GetParams("result")
+    page = GetParams("page")
+    option = GetParams("option")
     try:
         doc = fitz.open(path)
-        page = doc[0]
-        text = page.getText()
+        page = doc[int(page) - 1]
+
+        if option == "1":
+            fText = page.getText()
+
+        elif option == "2":
+            text = page.getTextWords()
+            position_in_y = []
+            text_array = []
+            
+            for e in text:
+                space = (e[2] - e[0] )/ len(e[4])
+                if e[1] in position_in_y:
+                    i = position_in_y.index(e[1])
+                    text_position = round(e[0]/space)
+                    text = text_array[i]
+                    if (text_position < len(text)):
+                        text = text[: text_position] + e[4] + text[text_position + len(e[4]):]
+                        print(text)
+                    else:
+                        text += " "*(text_position - len(text)) + e[4]
+                        print(text)
+                        
+                    text_array[i] = text
+                else:                    
+                    position_in_y.append(e[1])
+                    position_in_y.sort()
+                    text_array.insert(position_in_y.index(e[1]),e[4])
+
+            fText = "\n".join(text_array)
+       
 
         if result:
-            SetVar(result, text)
+            SetVar(result, fText)
     
     except Exception as e:
         PrintException()
