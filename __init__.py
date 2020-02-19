@@ -25,7 +25,7 @@ Para instalar librerias se debe ingresar por terminal a la carpeta "libs"
 """
 import os
 base_path = tmp_global_obj["basepath"]
-cur_path = base_path + 'modules' + os.sep + 'XPS' + os.sep + 'libs' + os.sep
+cur_path = base_path + 'modules' + os.sep + 'DocReader' + os.sep + 'libs' + os.sep
 sys.path.append(cur_path)
 
 import fitz
