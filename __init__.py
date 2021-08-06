@@ -47,7 +47,7 @@ if module == "read":
         page = doc[int(page) - 1]
 
         if option == "1":
-            fText = page.getText()
+            fText = page.getText().replace('\ufb01',"fi")
 
         elif option == "2":
             text = page.getTextWords()
