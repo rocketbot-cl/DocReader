@@ -36,13 +36,15 @@ import fitz
 
 module = GetParams("module")
 
-if module == "read":
+try:
 
-    path = GetParams("path")
-    result = GetParams("result")
-    page = GetParams("page")
-    option = GetParams("option")
-    try:
+    if module == "read":
+
+        path = GetParams("path")
+        result = GetParams("result")
+        page = GetParams("page")
+        option = GetParams("option")
+        
         doc = fitz.open(path)
         page = doc[int(page) - 1]
 
@@ -74,15 +76,31 @@ if module == "read":
                     text_array.insert(position_in_y.index(e[1]),e[4])
 
             fText = "\n".join(text_array)
-       
+    
 
         if result:
             SetVar(result, fText)
-    
-    except Exception as e:
-        PrintException()
-        raise e
-
-    
+        
 
 
+        
+    if module == "readPDF":
+        path = GetParams("path")
+        result = GetParams("result")        
+
+        import subprocess
+        
+        binpath = base_path + 'modules' + os.sep + 'DocReader' + os.sep + 'bin' + os.sep
+        
+        res = subprocess.Popen([binpath + 'test.exe', path], stderr=subprocess.PIPE, stdout=subprocess.PIPE).communicate()
+        
+        SetVar(result, res[0].decode())
+        
+        
+        
+        
+
+
+except Exception as e:
+    PrintException()
+    raise e
