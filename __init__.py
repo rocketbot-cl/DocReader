@@ -24,9 +24,19 @@ Para instalar librerias se debe ingresar por terminal a la carpeta "libs"
 
 """
 import os
+import traceback
+import sys
+
 base_path = tmp_global_obj["basepath"]
 cur_path = base_path + 'modules' + os.sep + 'DocReader' + os.sep + 'libs' + os.sep
-sys.path.append(cur_path)
+
+cur_path_x64 = os.path.join(cur_path, 'Windows' + os.sep +  'x64' + os.sep)
+cur_path_x86 = os.path.join(cur_path, 'Windows' + os.sep +  'x86' + os.sep)
+
+if sys.maxsize > 2**32 and cur_path_x64 not in sys.path:
+    sys.path.append(cur_path_x64)
+if sys.maxsize > 32 and cur_path_x86 not in sys.path:
+    sys.path.append(cur_path_x86)
 
 import fitz
 
@@ -81,12 +91,9 @@ try:
         if result:
             SetVar(result, fText)
         
-
-
-        
     if module == "readPDF":
         path = GetParams("path")
-        result = GetParams("result")        
+        result = GetParams("result")
 
         import subprocess
         
@@ -95,12 +102,8 @@ try:
         res = subprocess.Popen([binpath + 'test.exe', path], stderr=subprocess.PIPE, stdout=subprocess.PIPE).communicate()
         
         SetVar(result, res[0].decode())
-        
-        
-        
-        
-
 
 except Exception as e:
+    traceback.print_exc()
     PrintException()
     raise e
