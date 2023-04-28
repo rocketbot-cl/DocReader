@@ -1,22 +1,27 @@
+
+
+
+
 # Document Reader
   
-Module to read documents like XPS and PDF.
+Read and extract data for PDF and XPS files  
 
-*Read this in other languages: [English](README.md), [Español](README.es.md)*
+*Read this in other languages: [English](README.md), [Português](README.pr.md), [Español](README.es.md)*
 
 ## How to install this module
   
-__Download__ and __install__ the content in 'modules' folder in Rocketbot path  
-
+To install the module in Rocketbot Studio, it can be done in two ways:
+1. Manual: __Download__ the .zip file and unzip it in the modules folder. The folder name must be the same as the module and inside it must have the following files and folders: \__init__.py, package.json, docs, example and libs. If you have the application open, refresh your browser to be able to use the new module.
+2. Automatic: When entering Rocketbot Studio on the right margin you will find the **Addons** section, select **Install Mods**, search for the desired module and press install.  
 
 
 ## Overview
 
 
-1. Read Document  
+1. Read Document (XPS or PDF)  
 Read documents like XPS and PDF 
 
-2. Read Document  
+2. Read PDF  
 Read PDF documents  
 
 
