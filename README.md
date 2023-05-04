@@ -16,7 +16,7 @@ __Download__ and __install__ the content in 'modules' folder in Rocketbot path
 1. Read Document  
 Read documents like XPS and PDF 
 
-2. Read Document  
+2. Read PDF  
 Read PDF documents  
 
 

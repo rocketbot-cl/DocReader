@@ -23,7 +23,7 @@ Read documents like XPS and PDF
 |Option|||
 |Variable where the text will be saved||result|
 
-### Read Document
+### Read PDF
   
 Read PDF documents
 |Parameters|Description|example|
